@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 
 axios.defaults.withCredentials = true;
 export const api = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://doc-script-roan.vercel.app/api",
 
   headers: {
     "Content-Type": "application/json",
@@ -11,7 +11,7 @@ export const api = axios.create({
   },
   withCredentials: true,
 });
-export const apiLink = "http://localhost:3000";
+export const apiLink = "https://doc-script-roan.vercel.app";
 
 export const createEntity = async (endpoint, data) => {
   try {
@@ -23,7 +23,7 @@ export const createEntity = async (endpoint, data) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error?.response?.data?.message || `Failed to create ${endpoint}.`
+      error?.response?.data?.message || `Failed to create ${endpoint}.`,
     );
   }
 };
@@ -73,7 +73,7 @@ export const deleteEntity = async (endpoint, id) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error?.response?.data?.message || `Failed to delete ${endpoint}.`
+      error?.response?.data?.message || `Failed to delete ${endpoint}.`,
     );
   }
 };
@@ -88,7 +88,7 @@ export const updateEntity = async (endpoint, id, data) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error?.response?.data?.message || `Failed to update ${endpoint}.`
+      error?.response?.data?.message || `Failed to update ${endpoint}.`,
     );
   }
 };
@@ -103,7 +103,7 @@ export const findOneEntity = async (endpoint, id) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error?.response?.data?.message || `Failed to fetch ${endpoint}.`
+      error?.response?.data?.message || `Failed to fetch ${endpoint}.`,
     );
   }
 };
@@ -113,7 +113,7 @@ export async function logout() {
     window.location.href = "/";
   } catch (error) {
     throw new Error(
-      error?.response?.data?.message || `Failed to logout ${endpoint}.`
+      error?.response?.data?.message || `Failed to logout ${endpoint}.`,
     );
   }
 }
