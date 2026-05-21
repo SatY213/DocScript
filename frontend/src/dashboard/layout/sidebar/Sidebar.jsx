@@ -206,7 +206,7 @@ function Sidebar() {
     { name: "divider" },
     {
       name: "Statistiques",
-      path: "/dashboard/statistics",
+      path: "",
       icon: (
         <svg
           className="w-5 h-5 mr-3"

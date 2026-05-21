@@ -84,7 +84,7 @@ app.use(
     credentials: true,
   }),
 );
-
+app.use(express.static(path.join(__dirname, "dist")));
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/patients", patientRoutes);
@@ -98,7 +98,9 @@ app.use("/api/users", userRoutes);
 app.use("/api/settings", settingRoutes);
 app.use("/api/assistants", assistantRoutes);
 app.use("/api/admin", adminAuthRoutes);
-
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 // Serve pictures statically
 app.use("/cdn/pictures", express.static("pictures"));
 
