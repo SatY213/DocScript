@@ -1,0 +1,41 @@
+# Step 1: Set up the base image for building the React app
+FROM node:18 AS build
+
+# Step 2: Set the working directory for building the React app
+WORKDIR /Mavidia/frontend
+
+# Step 3: Copy the frontend package.json and package-lock.json to install dependencies
+COPY frontend/package*.json ./
+
+# Step 4: Install dependencies for the frontend
+RUN npm install
+
+# Step 5: Copy the rest of the frontend files into the container
+COPY frontend/ ./
+
+# Step 6: Build the React app (create the production build)
+RUN npm run build
+
+# Step 7: Set up the base image for the backend (Express server)
+FROM node:18
+
+# Step 8: Set the working directory for the backend
+WORKDIR /Mavidia
+
+# Step 9: Copy package.json and package-lock.json for backend dependencies
+COPY package*.json ./
+
+# Step 10: Install the backend dependencies
+RUN npm install
+
+# Step 11: Copy the backend server files (including server.js) into the container
+COPY . .
+
+# Step 12: Copy the built React app from the first stage (build) to the backend directory
+COPY --from=build /Mavidia/frontend/build /Mavidia/public
+
+# Step 13: Expose the port for the backend
+EXPOSE 3000
+
+# Step 14: Run the Express server when the container starts
+CMD ["node", "server.js"]

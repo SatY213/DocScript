@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    .content {
+      width: 700px;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
+    .header .left_section h3,
+    .right_section h3 {
+      font-size: 16px;
+    }
+    .header .left_section p,
+    .right_section p {
+      font-size: 13px;
+    }
+    .prescribed_medicines {
+      min-height: 200px;
+      padding: 10px;
+    }
+    .medicine {
+      display: flex;
+      flex-direction: column;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .prescribed_medicines {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .medicine span {
+      font-size: 13px;
+      font-weight: 400;
+    }
+    .doctor_note {
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .doctor_note h3 {
+      font-size: 16px;
+    }
+    .doctor_note p {
+      font-size: 13px;
+    }
+    .footer {
+      display: flex;
+      justify-self: end;
+      height: 100%;
+      position: relative;
+      flex-direction: column;
+    }
+    .footer .date {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .footer .signature {
+      display: flex;
+      justify-self: end;
+      align-self: flex-end;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  </style>
+  <body>
+    <div class="content">
+      <div class="header">
+        <div class="left_section">
+          <h3>Dr. Jean Dupont</h3>
+          <p>Médecin Cardiologue</p>
+          <p>123 Rue des Medecins, 75001 Paris</p>
+          <p>Tél: 01 23 45 67 89</p>
+          <p>12345678901</p>
+        </div>
+        <div class="right_section">
+          <h3>Patient :</h3>
+          <p>Jone Doe</p>
+          <p>Né(e) le :01/01/2000</p>
+          <p>Age : 25 ans</p>
+          <p>Poids : 80kg</p>
+          <p>Taille : 178cm</p>
+        </div>
+      </div>
+      <div class="body">
+        <div class="prescribed_medicines">
+          <p class="medicine">1. Paracetamol 500mg <span>2x par jour</span></p>
+          <p class="medicine">
+            2. Aspirine 500mg <span>4 comprimes par jour</span>
+          </p>
+        </div>
+        <div class="doctor_note">
+          <h3>Notes du medecin</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+            quod.
+          </p>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="date">Fait le 01/01/2023</div>
+        <div class="signature">Cachet et signature du medecin</div>
+      </div>
+    </div>
+  </body>
+</html>
