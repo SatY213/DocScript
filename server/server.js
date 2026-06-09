@@ -84,7 +84,9 @@ app.use(
     credentials: true,
   }),
 );
+app.use("/cdn/pictures", express.static(path.join(__dirname, "pictures")));
 app.use(express.static(path.join(__dirname, "client")));
+
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/patients", patientRoutes);
@@ -101,8 +103,6 @@ app.use("/api/admin", adminAuthRoutes);
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, "client", "index.html"));
 });
-// Serve pictures statically
-app.use("/cdn/pictures", express.static("pictures"));
 
 // MongoDB connection
 console.log("connecting to server... ");

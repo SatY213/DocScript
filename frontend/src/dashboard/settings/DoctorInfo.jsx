@@ -116,7 +116,7 @@ function DoctorInfo({
                         ? doctorForm.new_picture
                         : doctorForm.picture?.startsWith("http")
                           ? doctorForm.picture
-                          : `${apiLink}/storage/users/${doctorForm.picture}`
+                          : `${apiLink}/cdn/pictures/${doctorForm.picture}`
                     }
                     alt="Profile"
                     className="w-full h-full object-cover"

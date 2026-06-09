@@ -8,6 +8,6 @@ router.patch(
   "/update",
 
   uploadPictures.single("pictureFile"),
-  settingController.updateUser,
+  settingController.updateProfile,
 );
 module.exports = router;

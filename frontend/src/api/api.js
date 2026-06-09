@@ -3,7 +3,8 @@ import { jwtDecode } from "jwt-decode";
 
 axios.defaults.withCredentials = true;
 export const api = axios.create({
-  baseURL: "https://doc-script-roan.vercel.app/api",
+  // baseURL: "https://doc-script-roan.vercel.app/api",
+  baseURL: "http://localhost:3000/api",
 
   headers: {
     "Content-Type": "application/json",
@@ -11,7 +12,8 @@ export const api = axios.create({
   },
   withCredentials: true,
 });
-export const apiLink = "https://doc-script-roan.vercel.app";
+// export const apiLink = "https://doc-script-roan.vercel.app";
+export const apiLink = "http://localhost:3000";
 
 export const createEntity = async (endpoint, data) => {
   try {

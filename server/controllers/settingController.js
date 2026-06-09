@@ -1,4 +1,7 @@
 const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
+
 // ----------------------------------------------------
 //  GET SETTINGS INFO
 // ----------------------------------------------------
@@ -33,17 +36,12 @@ exports.getSettingsInfo = async (req, res) => {
 // ----------------------------------------------------
 // UPDATE PROFILE
 // ----------------------------------------------------
-exports.updateUser = async (req, res) => {
+
+exports.updateProfile = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    const user = await User.findByIdAndUpdate(userId, req.body, {
-      new: true,
-      runValidators: true,
-    })
-      .select("-password")
-      .lean();
-
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -51,10 +49,31 @@ exports.updateUser = async (req, res) => {
       });
     }
 
+    // 🔥 handle old image deletion
+    if (req.file) {
+      if (user.picture) {
+        const oldPath = path.join(__dirname, "../pictures", user.picture);
+
+        if (fs.existsSync(oldPath)) {
+          fs.unlinkSync(oldPath);
+        }
+      }
+
+      // assign new filename
+      req.body.picture = req.file.filename;
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
+      new: true,
+      runValidators: true,
+    })
+      .select("-password")
+      .lean();
+
     res.status(200).json({
       success: true,
       message: "Utilisateur mis à jour avec succès.",
-      data: user,
+      data: updatedUser,
     });
   } catch (error) {
     console.error("Error updating user:", error);
